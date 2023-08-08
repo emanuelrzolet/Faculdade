@@ -1,3 +1,4 @@
+#Exigência de Código 1
 def cachorro_peso():
     while True:
         try:
@@ -8,15 +9,16 @@ def cachorro_peso():
             else:
                 if peso < 3:
                     return 40
-                elif peso > 3 and peso < 10:
+                elif peso >= 3 and peso < 10:
                     return 50
-                elif peso > 10 and peso < 30:
+                elif peso >= 10 and peso < 30:
                     return 60
-                elif peso > 30 and peso < 50:
+                elif peso >= 30 and peso < 50:
                     return 70
         except ValueError:
             print("Peso inválido, digite somente valores numéricos.")
             continue
+#Exigência de Código 2
 def cachorro_pelo():
     print("Tipo de pelagem\n[c] - Curto\n[m] - Médio\n[l] - Longo")
     while True:
@@ -31,6 +33,7 @@ def cachorro_pelo():
         else:
             print("Tipo de pelo inválido!")
             continue
+#Exigência de Código 3
 def cachorro_extra():
     valor = 0
     print("Serviço Extra")
@@ -54,3 +57,11 @@ def cachorro_extra():
         except ValueError:
             print("Opção inválida, somente serão aceitos valores numéricos.")
             continue
+
+#main
+print("Bem vindos ao Pet Shop de Emanuel Rosa Zolet!")
+#Calculo do valor é obtido a partir do retorno das 3 funções criadas
+#Exigência de código 4
+total = (cachorro_peso() * cachorro_pelo()) + cachorro_extra()
+
+print(f"O total a pagar é R$ {total}")
