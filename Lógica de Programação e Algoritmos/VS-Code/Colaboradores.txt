@@ -1,0 +1,3 @@
+{'id': 1, 'nome': 'EManuel', 'setor': 'ewe', 'pagamento': 234.0};
+{'id': 2, 'nome': 'Lola', 'setor': '', 'pagamento': 45.0};
+{'id': 1, 'nome': 'Lola', 'setor': 'Set', 'pagamento': 3434.0};

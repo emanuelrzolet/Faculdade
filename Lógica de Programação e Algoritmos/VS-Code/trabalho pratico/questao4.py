@@ -1,12 +1,25 @@
+
+import manipulacao_de_arquivo
+
+
 #variáveis globais
+arquivo = "Colaboradores.txt"
 lista_colaboradores = []
 id_global = 0
+#Funções para salvar em arquivo
+if manipulacao_de_arquivo.existeArquivo(arquivo) == True:
+    print("Arquivo Existente")
+else:
+    manipulacao_de_arquivo.criaArquivo(arquivo)
+
+
 #Função para cadastrar colaborador, recebe o id como parametro e retorna o dicionario que será adicionado na lista de colaboradores.
 def cadastrar_colaborador(id):
     nome = input("Digite o nome do colaborador: ")
     setor = input("Digite de que setor o colaborador pertence: ")
     pagamento = float(input("Digite o valor de pagamento do colaborador: R$ "))
     colaborador = {'id': id,'nome': nome, 'setor': setor, 'pagamento': pagamento}
+    manipulacao_de_arquivo.salvar(colaborador= colaborador, nomeArquivo=arquivo)
     lista_colaboradores.append(colaborador)
 #Função para consultar colaborador
 def consultar_colaborador():
@@ -38,6 +51,8 @@ def remover_colaborador():
         if c['id'] == id:
             lista_colaboradores.remove(c)
             print("Colaborador foi removido com sucesso.")
+#Implementação da função para salvar a lista.
+
 #Main
 print("Bem vindo ao software de gerenciamento de pessoas de Emanuel Rosa Zolet!")
 #Menu com opções

@@ -1,0 +1,5 @@
+setup.py
+ManipulacaoDeArquivo.egg-info/PKG-INFO
+ManipulacaoDeArquivo.egg-info/SOURCES.txt
+ManipulacaoDeArquivo.egg-info/dependency_links.txt
+ManipulacaoDeArquivo.egg-info/top_level.txt
