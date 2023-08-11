@@ -10,25 +10,23 @@ def cadastrar_colaborador(id):
     lista_colaboradores.append(colaborador)
 #Função para consultar colaborador
 def consultar_colaborador():
-    print("[1] - Consultar Todos")
-    print("[2] - Consultar por Id")
-    print("[3] - Consultar por Setor")
-    print("[4] - Retornar ao Menu")
     while True:
-        opcao = int(input("Digite a opção desejada: "))
+        opcao = int(input("\nConsultando Colaborador:\n[1] - Consultar Todos\n[2] - Consultar por Id\n[3] - Consultar por Setor\n[4] - Retornar ao Menu\nDigite a opção desejada: "))
         if opcao == 1:
-            print(lista_colaboradores)
+            for c in lista_colaboradores:
+                print(f"\nID - {c['id']}\nNome - {c['nome']}\nSetor - {c['setor']}\nPagamento - R$ {c['pagamento']:.2f}")
         elif opcao == 2:
             id = int(input("Digite o ID do colaborador: "))
             for c in lista_colaboradores:
                 if(c['id'] == id):
-                    print(c)
+                    print(f"\nID - {c['id']}\nNome - {c['nome']}\nSetor - {c['setor']}\nPagamento - R$ {c['pagamento']:.2f}")
         elif opcao == 3:
             setor = input("Digite o Setor do colaborador: ")
             for c in lista_colaboradores:
                 if c['setor'] == setor:
-                    print(c)
+                    print(f"\nID - {c['id']}\nNome - {c['nome']}\nSetor - {c['setor']}\nPagamento - R$ {c['pagamento']:.2f}")
         elif opcao == 4:
+            print("Retornando ao Menu!")
             return
         else:
             print("opção inválida!")  
@@ -39,9 +37,22 @@ def remover_colaborador():
     for c in lista_colaboradores:
         if c['id'] == id:
             lista_colaboradores.remove(c)
-            print("Produto foi removido com sucesso.")
+            print("Colaborador foi removido com sucesso.")
 #Main
 print("Bem vindo ao software de gerenciamento de pessoas de Emanuel Rosa Zolet!")
-cadastrar_colaborador(id_global)
-print(lista_colaboradores)
-consultar_colaborador()
+#Menu com opções
+while True:
+    menu = int(input("\nMENU\nDigite a opção desejada:\n[1] - Cadastrar Colaborador\n[2] - Consultar Colaborador\n[3] - Remover Colaborador\n[4] - Encerrar Programa\nSua Opção: "))
+    if menu == 1:
+        id_global += 1
+        cadastrar_colaborador(id_global)
+        continue
+    elif menu == 2:
+        consultar_colaborador()
+        continue
+    elif menu == 3:
+        remover_colaborador()
+        continue
+    elif menu == 4:
+        print("Encerrando Aplicação!")
+        break

@@ -14,7 +14,11 @@ while True:
     #bloco condicional para sabor tradicional
     if sabor == 'tr':
         print("Sabor Tradicional selecionado.")
-        quantidade = int(input("Digite quantas bolas de sorvete você quer: "))
+        try:
+            quantidade = int(input("Digite quantas bolas de sorvete você quer: "))
+        except ValueError:
+            print("Digite somente valores inteiros de 1 a 3!")
+            continue
         if quantidade == 1:
             valorTotal += 6.00
             print("Item foi adicionado ao pedido com sucesso.")
@@ -45,7 +49,11 @@ while True:
     #bloco condicional para sabor premium
     elif sabor == 'pr':
         print("Sabor Premium selecionado.")
-        quantidade = int(input("Digite quantas bolas de sorvete você quer: "))
+        try:
+            quantidade = int(input("Digite quantas bolas de sorvete você quer: "))
+        except ValueError:
+            print("Digite somente valores inteiros de 1 a 3!")
+            continue
         if quantidade == 1:
             valorTotal += 7.00
             print("Item foi adicionado ao pedido com sucesso.")
@@ -76,7 +84,11 @@ while True:
     #bloco condicional para sabor especial
     elif sabor == 'es':
         print("Sabor Premium selecionado.")
-        quantidade = int(input("Digite quantas bolas de sorvete você quer: "))
+        try:
+            quantidade = int(input("Digite quantas bolas de sorvete você quer: "))
+        except ValueError:
+            print("Digite somente valores inteiros de 1 a 3!")
+            continue
         if quantidade == 1:
             valorTotal += 8.00
             print("Item foi adicionado ao pedido com sucesso.")
