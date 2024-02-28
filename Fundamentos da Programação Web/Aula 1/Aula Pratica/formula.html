@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Formulários</title>
+	</head>
+	<body>
+		<form action="">
+			<br /><br />
+			<label for="nome">Nome:</label>
+			<input
+				type="text"
+				name="nome"
+				placeholder="Digite o seu nome"
+				size="50"
+				maxlength="50"
+			/>
+			<br /><br /><br />
+			<label for="senha">Senha:</label>
+			<input
+				type="password"
+				name="password"
+				id="password"
+				placeholder="Digite sua senha"
+				maxlength="8"
+			/>
+			<br />
+			<br />
+			<fieldset>
+				<label for="linguagem">Linguagem que tem interesse</label>
+				<input type="checkbox" name="linguagem{}" id="c++" />C++
+				<input type="checkbox" name="linguagem{}" id="php" />php
+				<input type="checkbox" name="linguagem{}" id="delphi" />Delphi
+			</fieldset>
+			<label for="linguagemescolhida">Linguagem que irá cursar agora</label>
+			<input type="radio" name="curso" id="c++" />C++
+			<input type="radio" name="curso" id="php" />php
+			<input type="radio" name="curso" id="delphi" />Delphi
+			<br />
+			<br />
+			<select name="escola" id="">
+				<option value="c++">c++</option>
+				<option value="php">php</option>
+				<option value="delphi">Delphi</option>
+			</select>
+            <input type="submit" value="Enviar">
+		</form>
+	</body>
+</html>
