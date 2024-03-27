@@ -1,0 +1,59 @@
+
+
+-- CRIAÇÂO DAS TABELAS
+CREATE DATABASE Livraria;
+USE Livraria;
+
+CREATE TABLE Editora(
+    idEditora int PRIMARY KEY NOT NULL UNIQUE,
+    nome varchar(50) NOT NULL,
+    telefone varchar(20) NOT NULL,
+    email varchar(50) NOT NULL,
+    endereco varchar(100) NOT NULL
+);
+
+CREATE TABLE Cliente (
+    idCliente int PRIMARY KEY NOT NULL,
+    nome varchar(50) NOT NULL,
+    telefone varchar(20) NOT NULL,
+    email varchar(50) NOT NULL,
+    endereco varchar(100) NOT NULL
+);
+
+CREATE TABLE Pedido (
+    idPedido int PRIMARY KEY NOT NULL UNIQUE,
+    idCliente int NOT NULL,
+    dataPedido date NOT NULL,
+    valorPedido decimal(5,2) NOT NULL,
+    CONSTRAINT Pedido_fk1 FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
+);
+
+
+
+CREATE TABLE Livro (
+    idLivro int PRIMARY KEY NOT NULL UNIQUE,
+    idEditora int NOT NULL,
+    titulo varchar(100) NOT NULL,
+    autor varchar(50) NOT NULL,
+    ano int NOT NULL,
+    ISBN varchar(20) NOT NULL,
+    preco decimal(5,2) NOT NULL,
+    CONSTRAINT Livro_fk1 FOREIGN KEY (idEditora) REFERENCES Editora(idEditora)
+);
+
+CREATE TABLE Estoque (
+    idLivro int NOT NULL,
+    quantidade int NOT NULL,
+    CONSTRAINT Estoque_fk1 FOREIGN KEY (idLivro) REFERENCES Livro(idLivro)
+);
+
+CREATE TABLE ItemPedido (
+    idPedido int NOT NULL,
+    idLivro int NOT NULL,
+    quantidade int NOT NULL,
+    valorItemPedido decimal(5,2) NOT NULL,
+    CONSTRAINT ItemPedido_fk1 FOREIGN KEY (idPedido) REFERENCES Pedido(idPedido),
+    CONSTRAINT ItemPedido_fk2 FOREIGN KEY (idLivro) REFERENCES Livro(idLivro)
+);
+
+
