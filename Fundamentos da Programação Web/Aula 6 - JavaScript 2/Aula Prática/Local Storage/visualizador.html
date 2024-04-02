@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Olá</h1>
+		<p id="campoNome">Seu nome é:</p>
+		<p id="campoCidade">Sua Cidade é:</p>
+		<script>
+			//Captura os campos de visualização
+			const viewNome = document.getElementById("campoNome");
+			const viewCidade = document.getElementById("campoCidade");
+			//Adiciona o valor ao campo
+			viewNome += localStorage.getItem("nome");
+			viewCidade += localStorage.getItem("cidade");
+		</script>
+	</body>
+</html>
