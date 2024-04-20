@@ -1,3 +1,4 @@
+package Aula1;
 import java.util.Scanner;
 
 public class aula1 {
@@ -38,6 +39,7 @@ public class aula1 {
 
         //Array
         int numeros[] = new int[200];//Criado array vazia
+        System.out.println(numeros);
         int megaSena[] = {11,14,21,30,37,4,56};
         System.out.println(megaSena[0]);
 
