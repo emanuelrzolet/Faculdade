@@ -6,15 +6,6 @@ public class Livro {
 
 
     //Construtor
-    
-
-    //Getters e Setters
-    /**
-     * @return the titulo
-     */
-    public String getTitulo() {
-        return titulo;
-    }
     /**
      * @param titulo
      * @param genero
@@ -26,6 +17,23 @@ public class Livro {
         this.genero = genero;
         this.edicao = edicao;
         this.autor = autor;
+    }
+    // Info
+    public void info(){
+        System.out.println("Titulo do Livro: " + titulo);
+        System.out.println("Gênero do Livro: " + genero);
+        System.out.println("Edição: " + edicao);
+        autor.info();
+
+    }
+    
+
+    //Getters e Setters
+    /**
+     * @return the titulo
+     */
+    public String getTitulo() {
+        return titulo;
     }
     /**
      * @param titulo the titulo to set

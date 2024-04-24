@@ -2,12 +2,29 @@ public class Autor {
     private String nome, email, nacionalidade;
 
     /**
+     * @param nome
+     * @param email
+     * @param nacionalidade
+     */
+    public Autor(String nome, String email, String nacionalidade) {
+        this.nome = nome;
+        this.email = email;
+        this.nacionalidade = nacionalidade;
+    }
+    //Info
+    public void info(){
+        System.out.println("Nome do Autor: " + nome);
+        System.out.println("E-mail do Autor: " + email);
+        System.out.println("Nacionalidade do Autor: " + nacionalidade);
+    }
+    
+    /**
      * @return the nome
      */
     public String getNome() {
         return nome;
     }
-
+    
     /**
      * @param nome the nome to set
      */
@@ -43,17 +60,6 @@ public class Autor {
         this.nacionalidade = nacionalidade;
     }
 
-    /**
-     * @param nome
-     * @param email
-     * @param nacionalidade
-     */
-    public Autor(String nome, String email, String nacionalidade) {
-        this.nome = nome;
-        this.email = email;
-        this.nacionalidade = nacionalidade;
-    }
-    
     
 
 }
