@@ -1,3 +1,4 @@
+# Erros
 vExato = 123450.10
 vRelativo = 123400
 
