@@ -1,0 +1,62 @@
+# Importar as bibliotecas necessárias
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+from google.colab import files
+from PIL import Image
+
+# Função para carregar a imagem e preprocessá-la
+def preprocess_image(image_path):
+    # Carregar a imagem e converter para escala de cinza
+    img = Image.open(image_path).convert('L')
+    
+    # Redimensionar para 28x28 pixels (tamanho que o modelo espera)
+    img = img.resize((28, 28))
+    
+    # Converter a imagem para um array numpy
+    img_array = np.array(img)
+    
+    # Inverter as cores (pois as imagens do MNIST são brancas no fundo preto)
+    img_array = 255 - img_array
+    
+    # Normalizar os valores para o intervalo 0-1
+    img_array = img_array / 255.0
+    
+    # Mostrar a imagem
+    plt.imshow(img_array, cmap=plt.cm.binary)
+    plt.show()
+    
+    # Adicionar uma dimensão extra para o batch (o modelo espera um array 4D: [batch_size, 28, 28, 1])
+    img_array = np.expand_dims(img_array, axis=0)
+    
+    return img_array
+
+# Carregar a imagem do usuário
+uploaded = files.upload()
+
+# Pegar o caminho do arquivo de imagem carregado
+image_path = list(uploaded.keys())[0]
+
+# Preprocessar a imagem
+img_array = preprocess_image(image_path)
+
+# Fazer a previsão com o modelo treinado
+predictions = model.predict(img_array)
+
+# Obter as probabilidades
+predicted_probabilities = predictions[0]
+
+# Mostrar a certeza da rede para cada número (de 0 a 9)
+for i, probability in enumerate(predicted_probabilities):
+    print(f"Probabilidade de ser {i}: {probability * 100:.2f}%")
+
+# Mostrar o número com a maior probabilidade
+predicted_label = np.argmax(predicted_probabilities)
+print(f"\nA rede neural prevê que a imagem é o número: {predicted_label}")
+
+# Exibir as probabilidades em um gráfico de barras
+plt.bar(range(10), predicted_probabilities)
+plt.xlabel('Dígitos')
+plt.ylabel('Probabilidade')
+plt.title('Certeza do Modelo para Cada Número')
+plt.show()
