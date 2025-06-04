@@ -1,0 +1,41 @@
+# Inicializazação de uma lista ligada simples
+class Cartao:
+    def __init__(self, cor):
+        self.cor = cor
+        self.numero = None
+        self.ponteiro = None
+
+        def inserirComPrioridade(self, nodo):
+            if self.head is None:
+                self.head = nodo
+                return
+
+            anterior = None
+            atual = self.head
+
+            # Avança enquanto a cor for "A"
+            while atual is not None and atual.cor == "A":
+                anterior = atual
+                atual = atual.proximo
+
+            # Insere o nodo antes do primeiro "V" ou após os "A"
+            if anterior is None:
+                # Insere no início
+                nodo.proximo = self.head
+                self.head = nodo
+            else:
+                nodo.proximo = atual
+                anterior.proximo = nodo
+                
+                
+def inserirSemPrioridade(self, nodo):
+    if self.head is None:
+        self.head = nodo
+        return
+
+    nodo_atual = self.head
+    while nodo_atual.proximo != None:
+        nodo_atual = nodo_atual.proximo
+
+    nodo_atual.proximo = nodo
+    return
