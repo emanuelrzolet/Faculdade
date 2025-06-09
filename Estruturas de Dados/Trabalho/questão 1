@@ -3,39 +3,65 @@ class Cartao:
     def __init__(self, cor):
         self.cor = cor
         self.numero = None
-        self.ponteiro = None
+        self.proximo = None  # Corrija para 'proximo' ao invés de 'ponteiro'
 
-        def inserirComPrioridade(self, nodo):
-            if self.head is None:
-                self.head = nodo
-                return
+class ListaCartoes:
+    def __init__(self):
+        self.head = None
 
-            anterior = None
-            atual = self.head
+    def inserirComPrioridade(self, nodo):
+        if self.head is None:
+            self.head = nodo
+            return
 
-            # Avança enquanto a cor for "A"
-            while atual is not None and atual.cor == "A":
-                anterior = atual
-                atual = atual.proximo
+        anterior = None
+        atual = self.head
 
-            # Insere o nodo antes do primeiro "V" ou após os "A"
-            if anterior is None:
-                # Insere no início
-                nodo.proximo = self.head
-                self.head = nodo
-            else:
-                nodo.proximo = atual
-                anterior.proximo = nodo
-                
-                
-def inserirSemPrioridade(self, nodo):
-    if self.head is None:
-        self.head = nodo
+        # Avança enquanto a cor for "A"
+        while atual is not None and atual.cor == "A":
+            anterior = atual
+            atual = atual.proximo
+
+        # Insere o nodo antes do primeiro "V" ou após os "A"
+        if anterior is None:
+            # Insere no início
+            nodo.proximo = self.head
+            self.head = nodo
+        else:
+            nodo.proximo = atual
+            anterior.proximo = nodo
+
+    def inserirSemPrioridade(self, nodo):
+        if self.head is None:
+            self.head = nodo
+            return
+
+        nodo_atual = self.head
+        while nodo_atual.proximo is not None:
+            nodo_atual = nodo_atual.proximo
+
+        nodo_atual.proximo = nodo
+
+# Exemplo de uso:
+lista = ListaCartoes()
+
+def inserir():
+    cor = input("Digite a cor do cartão (A ou V): ").strip().upper()
+    if cor not in ["A", "V"]:
+        print("Cor inválida. Tente novamente.")
         return
 
-    nodo_atual = self.head
-    while nodo_atual.proximo != None:
-        nodo_atual = nodo_atual.proximo
+    if not hasattr(inserir, "contador_v"):
+        inserir.contador_v = 1
+    if not hasattr(inserir, "contador_a"):
+        inserir.contador_a = 201
 
-    nodo_atual.proximo = nodo
-    return
+    novo_cartao = Cartao(cor)
+    if cor == "V":
+        novo_cartao.numero = inserir.contador_v
+        inserir.contador_v += 1
+        lista.inserirSemPrioridade(novo_cartao)
+    else:
+        novo_cartao.numero = inserir.contador_a
+        inserir.contador_a += 1
+        lista.inserirComPrioridade(novo_cartao)
