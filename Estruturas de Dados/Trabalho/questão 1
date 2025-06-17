@@ -1,5 +1,6 @@
-# Inicialização da lista encadenada simples
+# Inicialização da lista encadeada simples
 class Cartao:
+    # Exigência de código 1
     def __init__(self, cor):
         self.cor = cor
         self.numero = None
@@ -8,8 +9,21 @@ class Cartao:
 class ListaCartoes:
     def __init__(self):
         self.head = None
+        
+    def inserirSemPrioridade(self, nodo):
+        # Exigência de código 2
+        if self.head is None:
+            self.head = nodo
+            return
+
+        nodo_atual = self.head
+        while nodo_atual.proximo is not None:
+            nodo_atual = nodo_atual.proximo
+
+        nodo_atual.proximo = nodo
 
     def inserirComPrioridade(self, nodo):
+        # Exigência de código 3
         if self.head is None:
             self.head = nodo
             return
@@ -31,21 +45,12 @@ class ListaCartoes:
             nodo.proximo = atual
             anterior.proximo = nodo
 
-    def inserirSemPrioridade(self, nodo):
-        if self.head is None:
-            self.head = nodo
-            return
-
-        nodo_atual = self.head
-        while nodo_atual.proximo is not None:
-            nodo_atual = nodo_atual.proximo
-
-        nodo_atual.proximo = nodo
 
 # Exemplo de uso:
 lista = ListaCartoes()
 
 def inserir():
+    # Exigência de código 4
     cor = input("Digite a cor do cartão (A ou V): ").strip().upper()
     if cor not in ["A", "V"]:
         print("Cor inválida. Tente novamente.")
@@ -67,6 +72,8 @@ def inserir():
         lista.inserirComPrioridade(novo_cartao)
         
 def imprimirListaEspera():
+    # Exigência de código 5
+    print("Lista de espera:")
     if lista.head is None:
         print("Lista de espera vazia.")
         return
@@ -77,6 +84,8 @@ def imprimirListaEspera():
         atual = atual.proximo
         
 def atenderPaciente():
+    # Exigência de código 6
+    print("Atendendo paciente...")
     
     if lista.head is None:
         print("Nenhum paciente na lista de espera.")
@@ -92,6 +101,7 @@ def atenderPaciente():
 # MAIN
 
 while True:
+    # Exigência de código 7
     print("\nMenu:")
     print("1 - Adicionar paciente à fila")
     print("2 - Mostrar pacientes na fila")
