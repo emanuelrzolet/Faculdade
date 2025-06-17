@@ -1,9 +1,9 @@
-# Inicializazação de uma lista ligada simples
+# Inicialização da lista encadenada simples
 class Cartao:
     def __init__(self, cor):
         self.cor = cor
         self.numero = None
-        self.proximo = None  # Corrija para 'proximo' ao invés de 'ponteiro'
+        self.proximo = None
 
 class ListaCartoes:
     def __init__(self):
@@ -65,3 +65,49 @@ def inserir():
         novo_cartao.numero = inserir.contador_a
         inserir.contador_a += 1
         lista.inserirComPrioridade(novo_cartao)
+        
+def imprimirListaEspera():
+    if lista.head is None:
+        print("Lista de espera vazia.")
+        return
+
+    atual = lista.head
+    while atual is not None:
+        print(f"Cartão {atual.numero} - Cor: {atual.cor}")
+        atual = atual.proximo
+        
+def atenderPaciente():
+    
+    if lista.head is None:
+        print("Nenhum paciente na lista de espera.")
+        return
+
+    atendido = lista.head
+    lista.head = atendido.proximo
+    print(f"Atendendo paciente com cartão {atendido.numero} - Cor: {atendido.cor}")
+    del atendido  # Libera o nodo atendido da memória
+    
+    
+
+# MAIN
+
+while True:
+    print("\nMenu:")
+    print("1 - Adicionar paciente à fila")
+    print("2 - Mostrar pacientes na fila")
+    print("3 - Atender paciente")
+    print("4 - Sair")
+
+    opcao = input("Escolha uma opção: ").strip()
+
+    if opcao == "1":
+        inserir()
+    elif opcao == "2":
+        imprimirListaEspera()
+    elif opcao == "3":
+        atenderPaciente()
+    elif opcao == "4":
+        print("Saindo do programa.")
+        break
+    else:
+        print("Opção inválida. Tente novamente.")
